@@ -1,6 +1,11 @@
 // Custom Styles
 // Add your own custom styles beyond PicoCSS defaults
 
+// Override container width for optimal reading experience
+.container {
+    max-width: 750px;
+}
+
 // Ensure footer stays at bottom
 body {
     display: flex;
