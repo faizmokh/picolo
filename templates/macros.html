@@ -1,0 +1,36 @@
+{# Pagination macro for blog listings #}
+{% macro pagination(paginator) %}
+    {% if paginator.number_pagers > 1 %}
+    <nav aria-label="pagination">
+        <ul>
+            {% if paginator.previous %}
+            <li><a href="{{ paginator.previous }}">← Previous</a></li>
+            {% else %}
+            <li><a href="#" aria-disabled="true">← Previous</a></li>
+            {% endif %}
+
+            <li>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</li>
+
+            {% if paginator.next %}
+            <li><a href="{{ paginator.next }}">Next →</a></li>
+            {% else %}
+            <li><a href="#" aria-disabled="true">Next →</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+{% endmacro pagination %}
+
+{# Post metadata display macro #}
+{% macro post_meta(page) %}
+    {% if page.date %}
+    <p>
+        <small>
+            <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+            {% if page.reading_time %}
+            • {{ page.reading_time }} min read
+            {% endif %}
+        </small>
+    </p>
+    {% endif %}
+{% endmacro post_meta %}

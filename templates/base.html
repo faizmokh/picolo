@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ lang | default(value="en") }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ config.title }}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ config.description | default(value=config.extra.site_description) }}{% endblock %}">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    {% block meta %}{% endblock %}
+
+    {# PicoCSS from CDN #}
+    {% if config.extra.pico_use_cdn %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@{{ config.extra.pico_cdn_version | default(value="2") }}/css/pico.min.css">
+    {% endif %}
+
+    {# Compiled custom styles #}
+    <link rel="stylesheet" href="{{ get_url(path="main.css") }}">
+
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+    {% block header %}
+    <header class="container">
+        <nav>
+            <ul>
+                <li><strong><a href="/" style="text-decoration: none; color: inherit;">{{ config.title }}</a></strong></li>
+            </ul>
+            {% if config.extra.show_nav %}
+            <ul>
+                {% for item in config.extra.nav_items %}
+                <li><a href="{{ item.path }}">{{ item.name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </nav>
+    </header>
+    {% endblock header %}
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block footer %}
+    <footer class="container">
+        <small>{{ config.extra.footer_text | default(value="Built with Zola") }}</small>
+    </footer>
+    {% endblock footer %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block title %}{{ page.title }} | {{ super() }}{% endblock %}
+
+{% block description %}
+    {% if page.description %}{{ page.description }}{% else %}{{ super() }}{% endif %}
+{% endblock %}
+
+{% block content %}
+<article>
+    <header>
+        <h1>{{ page.title }}</h1>
+        {{ macros::post_meta(page=page) }}
+    </header>
+
+    {{ page.content | safe }}
+</article>
+{% endblock content %}

@@ -1,0 +1,30 @@
+name = "zola-pico"
+description = "A minimal, semantic Zola theme built with PicoCSS"
+license = "MIT"
+homepage = "https://github.com/faizmokh/zola-pico"
+min_version = "0.18.0"
+demo = ""
+
+[author]
+name = "Faiz Mokhtar"
+homepage = ""
+
+[extra]
+# PicoCSS settings
+pico_cdn_version = "2"
+pico_use_cdn = true
+
+# Site metadata
+site_author = "Your Name"
+site_description = "A minimal blog built with Zola and PicoCSS"
+
+# Navigation
+show_nav = true
+nav_items = [
+    { path = "/", name = "Home" },
+    { path = "/blog", name = "Blog" },
+    { path = "/about", name = "About" }
+]
+
+# Footer
+footer_text = "Built with Zola & PicoCSS"

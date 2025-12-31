@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block content %}
+<article>
+    {{ section.content | safe }}
+</article>
+
+{% set blog_section = get_section(path="blog/_index.md") %}
+{% if blog_section %}
+<section>
+    <h2>Recent Posts</h2>
+    {% for page in blog_section.pages | slice(end=5) %}
+    <article>
+        <h3><a href="{{ page.permalink }}">{{ page.title }}</a></h3>
+        {{ macros::post_meta(page=page) }}
+        {% if page.description %}
+        <p>{{ page.description }}</p>
+        {% endif %}
+    </article>
+    {% endfor %}
+    <p><a href="{{ blog_section.permalink }}" role="button">View all posts →</a></p>
+</section>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,35 @@
+# The URL the site will be built for
+base_url = "https://example.com"
+title = "Zola Pico"
+description = "A minimal blog theme built with Zola and PicoCSS"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+[extra]
+# PicoCSS settings
+pico_cdn_version = "2"
+pico_use_cdn = true
+
+# Site metadata
+site_author = "Your Name"
+site_description = "A minimal blog built with Zola and PicoCSS"
+
+# Navigation
+show_nav = true
+nav_items = [
+    { path = "/", name = "Home" },
+    { path = "/blog", name = "Blog" },
+    { path = "/about", name = "About" }
+]
+
+# Footer
+footer_text = "Built with Zola & PicoCSS"
