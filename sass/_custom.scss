@@ -27,22 +27,6 @@ pre code {
     font-size: 0.875rem;
 }
 
-// Article spacing
-article {
-    margin-bottom: 2rem;
-
-    & + article {
-        padding-top: 2rem;
-        border-top: 1px solid var(--pico-muted-border-color);
-    }
-}
-
-// Post metadata styling
-article header p {
-    margin-bottom: 0;
-    color: var(--pico-muted-color);
-}
-
 // Pagination styling
 nav[aria-label="pagination"] {
     margin-top: 2rem;

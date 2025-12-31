@@ -4,7 +4,7 @@
 {% block title %}{{ section.title }} | {{ super() }}{% endblock %}
 
 {% block description %}
-    {% if section.description %}{{ section.description }}{% else %}{{ super() }}{% endif %}
+{% if section.description %}{{ section.description }}{% else %}{{ super() }}{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -16,30 +16,26 @@
 </header>
 
 {% if section.paginate_by %}
-    {% for page in paginator.pages %}
-    <article>
-        <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
-        {{ macros::post_meta(page=page) }}
-        {% if page.description %}
-        <p>{{ page.description }}</p>
-        {% elif page.summary %}
-        {{ page.summary | safe }}
-        {% endif %}
-        <a href="{{ page.permalink }}">Read more →</a>
-    </article>
-    {% endfor %}
+{% for page in paginator.pages %}
+<h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+{{ macros::post_meta(page=page) }}
+{% if page.description %}
+<p>{{ page.description }}</p>
+{% elif page.summary %}
+{{ page.summary | safe }}
+{% endif %}
+<a href="{{ page.permalink }}">Read more →</a>
+{% endfor %}
 
-    {{ macros::pagination(paginator=paginator) }}
+{{ macros::pagination(paginator=paginator) }}
 {% else %}
-    {% for page in section.pages %}
-    <article>
-        <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
-        {{ macros::post_meta(page=page) }}
-        {% if page.description %}
-        <p>{{ page.description }}</p>
-        {% endif %}
-        <a href="{{ page.permalink }}">Read more →</a>
-    </article>
-    {% endfor %}
+{% for page in section.pages %}
+<h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+{{ macros::post_meta(page=page) }}
+{% if page.description %}
+<p>{{ page.description }}</p>
+{% endif %}
+<a href="{{ page.permalink }}">Read more →</a>
+{% endfor %}
 {% endif %}
 {% endblock content %}
