@@ -4,17 +4,17 @@
     <nav aria-label="pagination">
         <ul>
             {% if paginator.previous %}
-            <li><a href="{{ paginator.previous }}">← Previous</a></li>
+            <li><a href="{{ paginator.previous }}" rel="prev">← Previous</a></li>
             {% else %}
-            <li><a href="#" aria-disabled="true">← Previous</a></li>
+            <li><span aria-disabled="true">← Previous</span></li>
             {% endif %}
 
-            <li>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</li>
+            <li><span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span></li>
 
             {% if paginator.next %}
-            <li><a href="{{ paginator.next }}">Next →</a></li>
+            <li><a href="{{ paginator.next }}" rel="next">Next →</a></li>
             {% else %}
-            <li><a href="#" aria-disabled="true">Next →</a></li>
+            <li><span aria-disabled="true">Next →</span></li>
             {% endif %}
         </ul>
     </nav>
