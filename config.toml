@@ -18,7 +18,7 @@ highlight_code = true
 # PicoCSS settings
 pico_cdn_version = "2"
 pico_use_cdn = true
-pico_theme = "indigo"  # Options: "default", "indigo", "blue", "red", "pink", "fuchsia", "purple", "violet", "cyan", "jade", "green", "lime", "yellow", "amber", "pumpkin", "orange", "sand", "grey", "zinc", "slate"
+pico_theme = "blue"  # Options: "default", "indigo", "blue", "red", "pink", "fuchsia", "purple", "violet", "cyan", "jade", "green", "lime", "yellow", "amber", "pumpkin", "orange", "sand", "grey", "zinc", "slate"
 
 # Site metadata
 site_author = "Your Name"
@@ -30,6 +30,10 @@ show_homepage_section = false  # Set to true to display a section on homepage
 #homepage_section_title = "Recent Posts"  # Optional: Title for the section
 #homepage_section_limit = 5  # Optional: Number of posts to display
 #homepage_section_button_text = "View all posts →"  # Optional: Text for the "view all" button
+
+# Pagination settings
+pagination_enabled = true              # Global toggle to enable/disable pagination
+pagination_default_items = 10          # Default number of items per page (for documentation)
 
 # Navigation
 show_nav = true

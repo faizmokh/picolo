@@ -27,7 +27,9 @@
 <a href="{{ page.permalink }}">Read more →</a>
 {% endfor %}
 
+{% if config.extra.pagination_enabled | default(value=true) %}
 {{ macros::pagination(paginator=paginator) }}
+{% endif %}
 {% else %}
 {% for page in section.pages %}
 <h2><a href="{{ page.permalink }}">{{ page.title }}</a></h2>

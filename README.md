@@ -99,6 +99,10 @@ nav_items = [
     { path = "/about", name = "About" }
 ]
 
+# Pagination settings
+pagination_enabled = true              # Global toggle to enable/disable pagination
+pagination_default_items = 10          # Default number of items per page (for documentation)
+
 # Footer
 show_footer = true                  # Set to false to hide the footer
 footer_text = "© 2025 Your Name • Built with Zola & PicoCSS"
@@ -114,6 +118,29 @@ The `pico_theme` option allows you to customize the color scheme. Available opti
 - Color themes: `"indigo"`, `"blue"`, `"red"`, `"pink"`, `"fuchsia"`, `"purple"`, `"violet"`, `"cyan"`, `"jade"`, `"green"`, `"lime"`, `"yellow"`, `"amber"`, `"pumpkin"`, `"orange"`, `"sand"`, `"grey"`, `"zinc"`, `"slate"`
 
 See [PicoCSS Color Schemes](https://picocss.com/docs/colors) for previews of each theme.
+
+### Pagination
+
+Control how sections display their pages with configurable pagination settings:
+
+- `pagination_enabled` (default: `true`) - Master toggle to show/hide pagination controls globally
+- `pagination_default_items` (default: `10`) - Recommended default for items per page
+
+**To enable pagination for a section**, add `paginate_by` to the section's front matter (e.g., `content/blog/_index.md`):
+
+```toml
++++
+title = "Blog"
+sort_by = "date"
+paginate_by = 10          # Show 10 posts per page
+template = "section.html"
++++
+```
+
+**Behavior:**
+- `pagination_enabled = true` (default): Sections with `paginate_by` show pagination controls (Previous/Next buttons)
+- `pagination_enabled = false`: Hides pagination controls but sections with `paginate_by` still show posts page-by-page
+- To show **all posts on one page**: Remove the `paginate_by` line from the section's front matter
 
 ## Customization
 
