@@ -2,7 +2,7 @@
 title = "Welcome"
 +++
 
-# Welcome to Zola Pico
+# Welcome to picolo
 
 A minimal, semantic blog theme built with [Zola](https://www.getzola.org) and [PicoCSS](https://picocss.com).
 

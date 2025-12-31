@@ -1,14 +1,14 @@
 +++
-title = "Welcome to Zola Pico"
+title = "Welcome to picolo"
 date = 2025-01-01
 description = "Introducing a minimal, semantic blog theme built with Zola and PicoCSS"
 +++
 
-Welcome to Zola Pico! This is a demonstration post showing off the theme's features.
+Welcome to picolo! This is a demonstration post showing off the theme's features.
 
-## What is Zola Pico?
+## What is picolo?
 
-Zola Pico combines two excellent tools:
+picolo combines two excellent tools:
 
 - **Zola**: A blazing fast static site generator written in Rust
 - **PicoCSS**: A minimalist CSS framework that styles semantic HTML

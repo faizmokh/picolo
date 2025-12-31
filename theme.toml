@@ -1,7 +1,7 @@
-name = "zola-pico"
+name = "picolo"
 description = "A minimal, semantic Zola theme built with PicoCSS"
 license = "MIT"
-homepage = "https://github.com/faizmokh/zola-pico"
+homepage = "https://github.com/faizmokh/picolo"
 min_version = "0.18.0"
 demo = ""
 

@@ -5,9 +5,9 @@ description = "Learn more about this theme and how it was built"
 
 ## About This Theme
 
-Zola Pico is a minimal blog theme that combines the power of [Zola](https://www.getzola.org) static site generator with the elegant simplicity of [PicoCSS](https://picocss.com).
+picolo is a minimal blog theme that combines the power of [Zola](https://www.getzola.org) static site generator with the elegant simplicity of [PicoCSS](https://picocss.com).
 
-### Why Zola Pico?
+### Why picolo?
 
 This theme was created with a few core principles in mind:
 

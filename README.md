@@ -1,4 +1,4 @@
-# Zola Pico Theme
+# picolo
 
 A minimal, semantic Zola theme built with [PicoCSS](https://picocss.com). This theme emphasizes clean, class-light HTML and automatic responsive design with built-in light/dark mode support.
 
@@ -11,6 +11,11 @@ A minimal, semantic Zola theme built with [PicoCSS](https://picocss.com). This t
 - **Customizable**: Easy to customize via CSS variables and Sass
 - **Syntax Highlighting**: Built-in code syntax highlighting
 - **Blog-Ready**: Pagination, sections, and blog post structure included
+
+## Requirements
+
+- **Zola** >= 0.18.0 - [Install Zola](https://www.getzola.org/documentation/getting-started/installation/)
+- **Git** - Required for theme installation via submodule
 
 ## Installation
 
@@ -28,17 +33,48 @@ A minimal, semantic Zola theme built with [PicoCSS](https://picocss.com). This t
    cd my-site
    ```
 
-2. Add the theme as a git submodule:
+2. Initialize git in your project (if not already done):
    ```bash
-   git submodule add https://github.com/faizmokh/zola-pico themes/zola-pico
+   git init
    ```
 
-3. Update your `config.toml`:
+3. Add the theme as a git submodule:
+   ```bash
+   git submodule add https://github.com/faizmokh/picolo themes/picolo
+   git submodule update --init --recursive
+   ```
+
+4. Update your `config.toml` to use the theme:
    ```toml
-   theme = "zola-pico"
+   theme = "picolo"
    ```
 
-4. Copy the theme's `config.toml` extra section to customize your site.
+5. Copy the configuration options from `themes/picolo/config.toml` to your project's `config.toml`:
+   - Copy the `[extra]` section and customize as needed
+   - See the [Configuration](#configuration) section below for all available options
+
+6. Start the development server:
+   ```bash
+   zola serve
+   ```
+
+#### Updating the Theme
+
+To update the theme to the latest version:
+
+```bash
+cd themes/picolo
+git pull origin main
+cd ../..
+git add themes/picolo
+git commit -m "Update picolo theme"
+```
+
+Or update all submodules at once:
+
+```bash
+git submodule update --remote
+```
 
 ## Configuration
 
@@ -47,8 +83,9 @@ Customize the theme by adding these variables to your `config.toml`:
 ```toml
 [extra]
 # PicoCSS settings
-pico_cdn_version = "2"
-pico_use_cdn = true
+pico_cdn_version = "2"              # PicoCSS version (1 or 2)
+pico_use_cdn = true                 # Use CDN or local PicoCSS
+pico_theme = "indigo"               # Color theme (see available options below)
 
 # Site metadata
 site_author = "Your Name"
@@ -63,44 +100,88 @@ nav_items = [
 ]
 
 # Footer
+show_footer = true                  # Set to false to hide the footer
 footer_text = "© 2025 Your Name • Built with Zola & PicoCSS"
+footer_extra_content = ""           # Optional: Additional HTML content (displayed above footer_text)
+# Example: footer_extra_content = "&copy; 2025 Your Name | <a href=\"/privacy\">Privacy</a>"
 ```
+
+### Theme Colors
+
+The `pico_theme` option allows you to customize the color scheme. Available options:
+
+- `"default"` - PicoCSS default theme
+- Color themes: `"indigo"`, `"blue"`, `"red"`, `"pink"`, `"fuchsia"`, `"purple"`, `"violet"`, `"cyan"`, `"jade"`, `"green"`, `"lime"`, `"yellow"`, `"amber"`, `"pumpkin"`, `"orange"`, `"sand"`, `"grey"`, `"zinc"`, `"slate"`
+
+See [PicoCSS Color Schemes](https://picocss.com/docs/colors) for previews of each theme.
 
 ## Customization
 
-### CSS Variables
+### If Using as a Git Submodule (Recommended)
 
-Override PicoCSS CSS variables in `sass/_variables.scss`:
+**Important:** Don't edit files inside `themes/picolo/` directly - your changes will be lost when updating the theme.
 
-```scss
-:root {
-    --pico-font-size: 18px;
-    --pico-spacing: 1.5rem;
-    // Add more custom variables
-}
-```
+#### Override Templates
 
-### Custom Styles
+Copy any template from `themes/picolo/templates/` to your project's `templates/` directory. Your version will take precedence over the theme's version.
 
-Add your own styles in `sass/_custom.scss`. All Sass files are automatically compiled by Zola.
-
-### Templates
-
-Override templates by creating files with the same name in your site's `templates/` directory. Available templates:
-
+**Available templates:**
 - `base.html` - Base template with header/footer
 - `index.html` - Homepage
 - `page.html` - Individual pages
 - `section.html` - Section listings (blog)
 - `404.html` - Error page
 
-### Using CDN vs Local PicoCSS
+**Example:** To customize the base template:
+```bash
+cp themes/picolo/templates/base.html templates/base.html
+# Now edit templates/base.html
+```
+
+#### Custom Styles
+
+Create your own Sass files in your project root (not in the theme directory):
+
+1. **Override CSS Variables** - Create `sass/variables.scss` in your project:
+   ```scss
+   :root {
+       --pico-font-size: 18px;
+       --pico-spacing: 1.5rem;
+       --pico-primary: #0066cc;
+   }
+   ```
+
+2. **Add Custom Styles** - Create `sass/custom.scss` in your project:
+   ```scss
+   // Your custom styles here
+   .custom-header {
+       color: var(--pico-primary);
+   }
+   ```
+
+3. **Include in Templates** - Override `templates/base.html` and add your stylesheet:
+   ```html
+   <link rel="stylesheet" href="{{ get_url(path="custom.css") }}">
+   ```
+
+Zola will automatically compile your Sass files to `public/`.
+
+#### Using CDN vs Local PicoCSS
 
 By default, the theme uses PicoCSS from CDN. To use a local copy:
 
 1. Download PicoCSS to your `static/` directory
 2. Set `pico_use_cdn = false` in `config.toml`
-3. Update the stylesheet link in `templates/base.html`
+3. Override `templates/base.html` and update the stylesheet link
+
+### If Using Directly (Cloned Repository)
+
+When working directly with a clone of this repository, you can edit theme files directly:
+
+- **CSS Variables**: Edit `sass/_variables.scss` for CSS variable overrides
+- **Custom Styles**: Edit `sass/_custom.scss` for additional styles
+- **Templates**: Edit files in `templates/` directory
+- All Sass files are automatically compiled by Zola
 
 ## Content Structure
 
