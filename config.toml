@@ -33,4 +33,6 @@ nav_items = [
 ]
 
 # Footer
+show_footer = true  # Set to false to hide the footer_text
 footer_text = "Built with Zola & PicoCSS"
+#footer_extra_content = "&copy; 2025 Your Name | <a href=\"/privacy\">Privacy</a>"  # Optional: Additional HTML content (displayed above footer_text)

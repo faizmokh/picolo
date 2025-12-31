@@ -45,10 +45,16 @@
         {% block content %}{% endblock %}
     </main>
 
-    {% block footer %}
-    <footer class="container">
-        <small>{{ config.extra.footer_text | default(value="Built with Zola") }}</small>
-    </footer>
-    {% endblock footer %}
+    {% if config.extra.show_footer %}
+        {% block footer %}
+            <footer class="container">
+                {% if config.extra.footer_extra_content %}
+                <div><small>{{ config.extra.footer_extra_content | safe }}</small></div>
+                {% endif %}
+                <small>{{ config.extra.footer_text | default(value="Built with Zola") }}</small>
+            </footer>
+        {% endblock footer %}
+    {% endif %}
 </body>
+
 </html>
