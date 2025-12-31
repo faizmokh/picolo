@@ -18,6 +18,7 @@ highlight_code = true
 # PicoCSS settings
 pico_cdn_version = "2"
 pico_use_cdn = true
+pico_theme = "indigo"  # Options: "default", "indigo", "blue", "red", "pink", "fuchsia", "purple", "violet", "cyan", "jade", "green", "lime", "yellow", "amber", "pumpkin", "orange", "sand", "grey", "zinc", "slate"
 
 # Site metadata
 site_author = "Your Name"

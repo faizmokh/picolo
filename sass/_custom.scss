@@ -6,6 +6,63 @@
     max-width: 750px;
 }
 
+// Navbar Styling - Theme Aware
+header:has(nav.site-nav) {
+    // Apply theme primary color as background
+    background-color: var(--pico-primary);
+    padding: 0.2rem 0; // Reduced height (was var(--pico-block-spacing-vertical))
+    margin-bottom: 0;
+}
+
+nav.site-nav {
+
+    // Remove underlines from brand links
+    strong a {
+        text-decoration: none;
+        padding: 0.2rem 1rem; // Add horizontal padding
+        display: inline-block;
+    }
+
+    // Style navigation links with theme awareness
+    ul {
+        li {
+            a {
+                // Use white/light text on colored background
+                color: var(--pico-primary-inverse);
+                text-decoration: none;
+                padding: 0.5rem 1rem; // Add horizontal padding to nav items
+
+                // Smooth transitions for interactive states
+                transition: opacity 0.2s ease-in-out;
+
+                // Hover state
+                &:hover {
+                    opacity: 0.8;
+                }
+
+                // Focus state for accessibility
+                &:focus-visible {
+                    outline: 2px solid var(--pico-primary-inverse);
+                    outline-offset: 2px;
+                }
+            }
+        }
+    }
+
+    // Brand styling (left list)
+    ul:first-child {
+        strong {
+            color: var(--pico-primary-inverse);
+
+            a {
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+
 // Ensure footer stays at bottom
 body {
     display: flex;
@@ -57,6 +114,7 @@ nav[aria-label="pagination"] {
 
 // Print styles
 @media print {
+
     header nav,
     footer {
         display: none;

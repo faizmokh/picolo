@@ -11,7 +11,11 @@
 
     {# PicoCSS from CDN #}
     {% if config.extra.pico_use_cdn %}
+        {% if config.extra.pico_theme and config.extra.pico_theme != "default" %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@{{ config.extra.pico_cdn_version | default(value="2") }}/css/pico.{{ config.extra.pico_theme }}.min.css">
+        {% else %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@{{ config.extra.pico_cdn_version | default(value="2") }}/css/pico.min.css">
+        {% endif %}
     {% endif %}
 
     {# Compiled custom styles #}
@@ -22,9 +26,9 @@
 <body>
     {% block header %}
     <header class="container">
-        <nav>
+        <nav class="site-nav">
             <ul>
-                <li><strong><a href="/" style="text-decoration: none; color: inherit;">{{ config.title }}</a></strong></li>
+                <li><strong><a href="/">{{ config.title }}</a></strong></li>
             </ul>
             {% if config.extra.show_nav %}
             <ul>
